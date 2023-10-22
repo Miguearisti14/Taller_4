@@ -53,9 +53,12 @@ public class Taller4 {
         // Inicio de Hashmaps de casa y sus ventas
         HashMap<String, Integer> ventas = new HashMap<String, Integer>();
         HashMap<String, Integer> casas = Casas(10);
+        HashMap<String, Integer> numeroVentas = new HashMap<String, Integer>();
 
+        
         for (String barrio : nombreBarrios) {
             ventas.put(barrio, 0);
+            numeroVentas.put(barrio, 0);
         }
 
         int userEntry = 0;
@@ -93,30 +96,55 @@ public class Taller4 {
                         int actualVenta = ventas.get(nombreBarrios[randBarrio]);
                         int newVenta = actualVenta + (Price * 3);
                         ventas.replace(nombreBarrios[randBarrio], newVenta);
+
+                        //* Contador para mayor numero de ventas */
+                        int numActual = numeroVentas.get(nombreBarrios[randBarrio]);
+                        int numNuevo = (numActual + 1);
+                        numeroVentas.replace(nombreBarrios[randBarrio], numNuevo);
                     }
                     // *Aranjuez: Peso 2 */
                     else if (randBarrio == 1) {
                         int actualVenta = ventas.get(nombreBarrios[randBarrio]);
                         int newVenta = actualVenta + (Price * 2);
                         ventas.replace(nombreBarrios[randBarrio], newVenta);
+
+                        //* Contador para mayor numero de ventas */
+                        int numActual = numeroVentas.get(nombreBarrios[randBarrio]);
+                        int numNuevo = (numActual + 1);
+                        numeroVentas.replace(nombreBarrios[randBarrio], numNuevo);
                     }
                     // *Manrique: Peso 4 */
                     else if (randBarrio == 2) {
                         int actualVenta = ventas.get(nombreBarrios[randBarrio]);
                         int newVenta = actualVenta + (Price * 4);
                         ventas.replace(nombreBarrios[randBarrio], newVenta);
+
+                        //* Contador para mayor numero de ventas */
+                        int numActual = numeroVentas.get(nombreBarrios[randBarrio]);
+                        int numNuevo = (numActual + 1);
+                        numeroVentas.replace(nombreBarrios[randBarrio], numNuevo);
                     }
                     // *Carlos E: Peso 5 */
                     else if (randBarrio == 3) {
                         int actualVenta = ventas.get(nombreBarrios[randBarrio]);
                         int newVenta = actualVenta + (Price * 5);
                         ventas.replace(nombreBarrios[randBarrio], newVenta);
+
+                        //* Contador para mayor numero de ventas */
+                        int numActual = numeroVentas.get(nombreBarrios[randBarrio]);
+                        int numNuevo = (numActual + 1);
+                        numeroVentas.replace(nombreBarrios[randBarrio], numNuevo);
                     }
                     // *Robledo: Peso 6 */
                     else if (randBarrio == 4) {
                         int actualVenta = ventas.get(nombreBarrios[randBarrio]);
                         int newVenta = actualVenta + (Price * 6);
                         ventas.replace(nombreBarrios[randBarrio], newVenta);
+
+                        //* Contador para mayor numero de ventas */
+                        int numActual = numeroVentas.get(nombreBarrios[randBarrio]);
+                        int numNuevo = (numActual + 1);
+                        numeroVentas.replace(nombreBarrios[randBarrio], numNuevo);
                     }
                 }
 
@@ -162,8 +190,24 @@ public class Taller4 {
             }
         }
 
+        // *Para hallar el barrio que tuvo mas ventas */
+        String barrioConMasVentas = null;
+        int mayoresVentas = Integer.MIN_VALUE;
+
+        for (String barrio : numeroVentas.keySet()) {
+            int valor = ventas.get(barrio);
+
+            if (valor > mayoresVentas) {
+                mayoresVentas = valor;
+                barrioConMasVentas = barrio;
+            }
+        }
+
         System.out.println("El barrio que mas dinero gano fue:" + barrioConMayorDinero);
         System.out.println("El barrio que menos dinero gano fue:" + barrioConMenorDinero);
+        System.out.println("El barrio que mas ventas tuvo fue:" + barrioConMasVentas);
+
+        scner.close();
 
     }
 
