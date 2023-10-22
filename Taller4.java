@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
@@ -135,6 +136,35 @@ public class Taller4 {
             System.out.println(barrio + " vendió " + ventas.get(barrio));
 
         }
+        // *Para hallar el barrio que gano mas dinero */
+        String barrioConMayorDinero = null;
+        int valorMayor = Integer.MIN_VALUE;
+
+        for (String barrio : ventas.keySet()) {
+            int valor = ventas.get(barrio);
+
+            if (valor > valorMayor) {
+                valorMayor = valor;
+                barrioConMayorDinero = barrio;
+            }
+        }
+
+        // *Para hallar el barrio que gano menos dinero */
+        String barrioConMenorDinero = null;
+        int valorMenor = Integer.MAX_VALUE;
+
+        for (String barrio : ventas.keySet()) {
+            int valor = ventas.get(barrio);
+
+            if (valor < valorMayor) {
+                valorMenor = valor;
+                barrioConMenorDinero = barrio;
+            }
+        }
+
+        System.out.println("El barrio que mas dinero gano fue:" + barrioConMayorDinero);
+        System.out.println("El barrio que menos dinero gano fue:" + barrioConMenorDinero);
+
     }
 
 }
