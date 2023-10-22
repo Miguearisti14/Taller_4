@@ -64,59 +64,70 @@ public class Taller4 {
         System.out.println("¡Hola te doy la bienvenida a Tinder House!");
         System.out.println("El juego consiste en hacer match con cada casa que te guste");
         System.out.println("presiona 0 para descartar, 1 para comprar y 2 para terminar el juego");
-        do {
-            // Elegir una clave aleatoria
-            Set<String> claves = casas.keySet();
-            int cantidadClaves = claves.size();
-            int indiceAleatorio = new Random().nextInt(cantidadClaves);
-            String claveAleatoria = (String) claves.toArray()[indiceAleatorio];
 
-            // Aqui va el juego
-            int randBarrio = rnd.nextInt(nombreBarrios.length);
-            int Price = casas.get(claveAleatoria);
+        try {
+
+            do {
+                // Elegir una clave aleatoria
+                Set<String> claves = casas.keySet();
+                int cantidadClaves = claves.size();
+                int indiceAleatorio = new Random().nextInt(cantidadClaves);
+                String claveAleatoria = (String) claves.toArray()[indiceAleatorio];
+
+                // Aqui va el juego
+                int randBarrio = rnd.nextInt(nombreBarrios.length);
+                int Price = casas.get(claveAleatoria);
+                System.out.println("------*-------");
+                System.out.println(claveAleatoria);
+                System.out.println(nombreBarrios[randBarrio]);
+                System.out.println(Price);
+                System.out.println("------*-------");
+
+                userEntry = scner.nextInt();
+
+                // Accion a realizar por el usuario
+                if (userEntry == 1) {
+                    // *Floresta: Peso 3 */
+                    if (randBarrio == 0) {
+                        int actualVenta = ventas.get(nombreBarrios[randBarrio]);
+                        int newVenta = actualVenta + (Price * 3);
+                        ventas.replace(nombreBarrios[randBarrio], newVenta);
+                    }
+                    // *Aranjuez: Peso 2 */
+                    else if (randBarrio == 1) {
+                        int actualVenta = ventas.get(nombreBarrios[randBarrio]);
+                        int newVenta = actualVenta + (Price * 2);
+                        ventas.replace(nombreBarrios[randBarrio], newVenta);
+                    }
+                    // *Manrique: Peso 4 */
+                    else if (randBarrio == 2) {
+                        int actualVenta = ventas.get(nombreBarrios[randBarrio]);
+                        int newVenta = actualVenta + (Price * 4);
+                        ventas.replace(nombreBarrios[randBarrio], newVenta);
+                    }
+                    // *Carlos E: Peso 5 */
+                    else if (randBarrio == 3) {
+                        int actualVenta = ventas.get(nombreBarrios[randBarrio]);
+                        int newVenta = actualVenta + (Price * 5);
+                        ventas.replace(nombreBarrios[randBarrio], newVenta);
+                    }
+                    // *Robledo: Peso 6 */
+                    else if (randBarrio == 4) {
+                        int actualVenta = ventas.get(nombreBarrios[randBarrio]);
+                        int newVenta = actualVenta + (Price * 6);
+                        ventas.replace(nombreBarrios[randBarrio], newVenta);
+                    }
+                }
+
+            } while (userEntry != 2);
+        }
+
+        catch (Exception e) {
             System.out.println("------*-------");
-            System.out.println(claveAleatoria);
-            System.out.println(nombreBarrios[randBarrio]);
-            System.out.println(Price);
+            System.out.println("Caracter no valido.\nVuelva a intentarlo");
             System.out.println("------*-------");
-
-            userEntry = scner.nextInt();
-
-            // Accion a realizar por el usuario
-            if (userEntry == 1) {
-                // *Floresta: Peso 3 */
-                if (randBarrio == 0) {
-                    int actualVenta = ventas.get(nombreBarrios[randBarrio]);
-                    int newVenta = actualVenta + (Price * 3);
-                    ventas.replace(nombreBarrios[randBarrio], newVenta);
-                }
-                // *Aranjuez: Peso 2 */
-                else if (randBarrio == 1) {
-                    int actualVenta = ventas.get(nombreBarrios[randBarrio]);
-                    int newVenta = actualVenta + (Price * 2);
-                    ventas.replace(nombreBarrios[randBarrio], newVenta);
-                }
-                // *Manrique: Peso 4 */
-                else if (randBarrio == 2) {
-                    int actualVenta = ventas.get(nombreBarrios[randBarrio]);
-                    int newVenta = actualVenta + (Price * 4);
-                    ventas.replace(nombreBarrios[randBarrio], newVenta);
-                }
-                // *Carlos E: Peso 5 */
-                else if (randBarrio == 3) {
-                    int actualVenta = ventas.get(nombreBarrios[randBarrio]);
-                    int newVenta = actualVenta + (Price * 5);
-                    ventas.replace(nombreBarrios[randBarrio], newVenta);
-                }
-                // *Robledo: Peso 6 */
-                else if (randBarrio == 4) {
-                    int actualVenta = ventas.get(nombreBarrios[randBarrio]);
-                    int newVenta = actualVenta + (Price * 6);
-                    ventas.replace(nombreBarrios[randBarrio], newVenta);
-                }
-            }
-
-        } while (userEntry != 2);
+            System.out.println();
+        }
 
         System.out.println("Reporte de ventas:");
 
